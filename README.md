@@ -1,3 +1,3 @@
 ## Linknode
 
-This library provides the functionality for LinkNode apollo for graphql
+This library provides the functionality for LinkNode for graphql
