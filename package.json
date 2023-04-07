@@ -1,0 +1,27 @@
+{
+  "name": "@cellis/linknode-apollo",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/client": "^3.7.11",
+    "@cellis/linknode": "^0.1.5",
+    "@types/debug": "^4.1.7",
+    "debug": "^4.3.4",
+    "graphql-request": "^5.2.0",
+    "typescript": "^5.0.2"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint . --ext .ts",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/prop-types": "^15.7.5",
+    "ts-node": "^10.9.1"
+  },
+  "peerDependencies": {}
+}
