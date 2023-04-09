@@ -1,18 +1,23 @@
 import { ChainNode, ChainNodeArgs } from "@cellis/linknode";
 import { GraphQLClient } from "graphql-request";
-import { RequestConfig, RequestDocument, RequestOptions, Variables, VariablesAndRequestHeadersArgs } from "graphql-request/build/esm/types";
+import { RequestConfig, RequestDocument,Variables } from "graphql-request/build/esm/types";
 
-type GraphQlLinkNodeArgs<I,O> = {
+
+export type GraphQlLinkNodeArgs = {
   uri: string;
   jwt?: string;
+  query: string;
 } & ChainNodeArgs<any, any>;
 
-export class GraphqlNode<I, O, V extends Variables> extends ChainNode<RequestOptions<V>,O> {
+export class GraphqlNode<V extends Variables, O> extends ChainNode<V,O> {
   protected client: GraphQLClient;
-  constructor(args: GraphQlLinkNodeArgs<I, O>) {
-    const { uri, jwt, ...rest } = args;
+  protected query: string;
+  constructor(args: GraphQlLinkNodeArgs) {
+    const { uri, jwt, query, ...rest } = args;
 
     super(rest);
+
+    this.query = query;
     const clientOptions: RequestConfig = {
     };
 
@@ -25,10 +30,13 @@ export class GraphqlNode<I, O, V extends Variables> extends ChainNode<RequestOpt
     this.client = new GraphQLClient(uri, clientOptions);
   }
 
-  async resolve(query: RequestOptions<V>): Promise<void> {
+  async resolve(variables: V) {
     try {
       // const result = await this.client.query<O,V>(data);
-      const result = await this.client.request<O,V>(query);
+      const result = await this.client.request<O>({
+        query: this.query,
+        variables,
+      })
 
       super.resolve(result);
     } catch (error) {
