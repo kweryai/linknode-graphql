@@ -1,6 +1,6 @@
 import { ChainNode, ChainNodeArgs } from "@cellis/linknode";
 import { GraphQLClient } from "graphql-request";
-import { RequestConfig, RequestDocument,Variables } from "graphql-request/build/esm/types";
+import { RequestConfig,Variables } from "graphql-request/build/esm/types";
 
 
 export type GraphQlLinkNodeArgs = {
@@ -9,7 +9,7 @@ export type GraphQlLinkNodeArgs = {
   query: string;
 } & ChainNodeArgs<any, any>;
 
-export class GraphqlNode<V extends Variables, O> extends ChainNode<V,O> {
+export class GraphqlNode<V extends Variables, O, G> extends ChainNode<V,O, G> {
   protected client: GraphQLClient;
   protected query: string;
   constructor(args: GraphQlLinkNodeArgs) {
@@ -32,11 +32,10 @@ export class GraphqlNode<V extends Variables, O> extends ChainNode<V,O> {
 
   async resolve(variables: V) {
     try {
-      // const result = await this.client.query<O,V>(data);
-      const result = await this.client.request<O>({
-        query: this.query,
+      const result = await this.client.request<O>(
+        this.query,
         variables,
-      })
+      );
 
       super.resolve(result);
     } catch (error) {
