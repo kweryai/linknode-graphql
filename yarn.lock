@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@cellis/linknode@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@cellis/linknode/-/linknode-0.1.8.tgz#a8b14c4b40d2eb6a89f9af7bc735407c63feea7e"
-  integrity sha512-KV8BhCa/QDW8GBKG6s81xyyDQ73SgmneT5l/vFYk+XFS1nblVEgHMigrfJ1DnSkNsqaQPVUzM6yW+bHFVjUWTg==
+"@cellis/linknode@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@cellis/linknode/-/linknode-0.1.9.tgz#815db6fd3b2a14b54b2c1a1db2a89ebf689e5fe4"
+  integrity sha512-38vVC3dtLiuc2LzlBem1/MUUSORQ+5qxjV7hpM0Fh68lXmVIkds9/ege2utbPGfNmk67Fy0UcbryDNNgr8Mkng==
   dependencies:
     "@types/debug" "^4.1.7"
     debug "^4.3.4"
