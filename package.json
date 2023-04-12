@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "license": "MIT",
   "dependencies": {
-    "@cellis/linknode": "^0.1.7",
+    "@cellis/linknode": "^0.1.8",
     "@types/debug": "^4.1.7",
     "debug": "^4.3.4",
     "graphql-request": "^5.2.0",
